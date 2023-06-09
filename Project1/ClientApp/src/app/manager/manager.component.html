@@ -1,0 +1,145 @@
+<div class="row" style="--bs-gutter-x: 0;">
+  <div class="col" style="text-align: right">
+    <button (click)="getOrders()" class="btn2">Orders</button>
+  </div>
+  <div class="col" style="text-align: left">
+    <button (click)="getMenuItems()" class="btn2">Items</button>
+  </div>
+</div>
+
+<div *ngIf="showMenuItems">
+  <div class="row" style="--bs-gutter-x: 0;">
+    <div class="grid-container" style="justify-items: center">
+      <div *ngFor="let menuItem of menuItems" class="grid-item card text-dark  mt-5" style="width: 500px; background-color: #e5ecf26e;">
+        <div class="row" style="--bs-gutter-x: 0;">
+
+          <div class="col">
+
+            <div style="padding: 20px;">
+              <img src="{{menuItem.image}}" style="height: 250px; width: 250px">
+            </div>
+
+          </div>
+
+          <div class="col">
+
+
+
+            <div class="row" style="--bs-gutter-x: 0;">
+              <div style="padding: 20px;">
+                <h6 style="font-size:24px">{{menuItem.name}}</h6>
+                <h6>{{menuItem.price}} грн</h6>
+                <h6 style="font-size:18px">{{menuItem.description}}</h6>
+              </div>
+            </div>
+
+            <div class="row" style="position: absolute; bottom: 0; right: 0; --bs-gutter-x: 0; margin-bottom: 5%; margin-right: 7%">
+              <button (click)="showEditMenuItem(menuItem)" type="submit" class="btn btn-primary" style="width: 150px; align-self: end;">Edit</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showOrders">
+  <div *ngFor="let order of orders">
+
+    <div class="grid-item card text-dark  mt-5" style="height: 160px; width: 900px; margin-left: 200px">
+      <div class="parent">
+        <div class="div1">
+          <h6 style="font-size: 20px; margin-top:55px; margin-left: 30px">{{order.id}}</h6>
+        </div>
+        <div class="div2">
+          <h6 style="font-size: 20px; margin-top: 35px">Price:</h6>
+          <h6 style="font-size: 20px;">{{order.totalPrice}}</h6>
+        </div>
+
+        <div class="div3">
+          <h6 style="font-size: 16px; margin-top: 25px; margin-left: -90px">Client: {{order.name}}</h6>
+        </div>
+        <div class="div4">
+          <h6 style="font-size: 16px; margin-left: -90px">Email: {{order.email}}</h6>
+        </div>
+        <div class="div5">
+          <h6 style="font-size: 16px; margin-top: -25px; margin-left: -90px">Adress: {{order.adress}}</h6>
+        </div>
+
+        <div class="div6">
+          <h6 style="font-size: 20px; margin-top: 35px">Status:</h6>
+          <h6 style="font-size: 20px;">{{order.status}}</h6>
+        </div>
+        <div class="div7">
+          <h6 style="font-size: 20px; margin-top: 35px">Courier:</h6>
+          <h6 style="font-size: 20px;">{{order.courier}}</h6>
+        </div>
+
+        <div class="div8">
+          <button (click)="showAssignCourier(order)" type="submit" class="btn btn-primary" style="width: 100px; margin-top: -85px; margin-left: 775px">Assign</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  <form [formGroup]="form">
+    <div *ngIf="showEditItem">
+
+      <div class="editMenuItemBg">
+      </div>
+
+      <div class="grid-item card text-dark  mt-5 editMenuItem" style="opacity: 1.0;">
+
+        <span (click)="showEditItem = false" style="margin-left:450px" class="close">&times;</span>
+
+        <h6 style="font-size: 20px; margin-top:-10px; margin-left: 40px">Name:</h6>
+        <input formControlName="name" style="width: 90%; margin-left: 25px" placeholder="Name" class="form-control" type="text" />
+
+        <h6 style="font-size: 20px; margin-top: 20px; margin-left: 40px">Description:</h6>
+        <input formControlName="description" style="width: 90%; margin-left: 25px" placeholder="Description" class="form-control" type="text" />
+
+        <h6 style="font-size: 20px; margin-top: 20px; margin-left: 40px">Price:</h6>
+        <input formControlName="price" style="width: 20%; margin-left: 25px " class="form-control" type="number" min="1" />
+
+        <button (click)="updateMenuItem()" type="submit" class="btn btn-primary" style="width: 100px; margin-top: 20px; margin-left: 350px">Save</button>
+
+      </div>
+
+
+
+    </div>
+  </form>
+
+
+    <div *ngIf="showCourier">
+
+      <div class="editMenuItemBg">
+      </div>
+
+      <div class="grid-item card text-dark  mt-5 assignCourier" style="opacity: 1.0;">
+
+        <span (click)="showCourier = false" style="margin-left:450px" class="close">&times;</span>
+
+        <div style="margin-left: 125px" class="dropdown">
+          <button class="dropbtn">{{currentName}}</button>
+          <div class="dropdown-content">
+            <div *ngFor="let name of courierNames">
+
+              <button (click)="this.currentName = name" class="dropbtn2">{{name}}</button>
+              
+            </div>
+          </div>
+        </div>
+
+        <button (click)="updateOrder()" type="submit" class="btn btn-primary" style="width: 100px; margin-top: 20px; margin-left: 350px">Save</button>
+
+      </div>
+
+
+
+    </div>
+

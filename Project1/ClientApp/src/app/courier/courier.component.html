@@ -1,0 +1,92 @@
+<div class="row" style="--bs-gutter-x: 0;">
+  <div class="col" style="text-align: right">
+    <button (click)="showCompletedOrders()" class="btn2">Completed</button>
+  </div>
+  <div class="col" style="text-align: left">
+    <button (click)="showDeliveredOrders()" class="btn2">Delivered</button>
+  </div>
+</div>
+
+<div *ngIf="showCompleted">
+  <div *ngFor="let order of orders">
+
+    <div class="grid-item card text-dark  mt-5" style="height: 160px; width: 900px; margin-left: 200px">
+      <div class="parent">
+        <div class="div1">
+          <h6 style="font-size: 20px; margin-top:55px; margin-left: 30px">{{order.id}}</h6>
+        </div>
+        <div class="div2">
+          <h6 style="font-size: 20px; margin-top: 35px">Price:</h6>
+          <h6 style="font-size: 20px;">{{order.totalPrice}}</h6>
+        </div>
+
+        <div class="div3">
+          <h6 style="font-size: 16px; margin-top: 25px; margin-left: -90px">Client: {{order.name}}</h6>
+        </div>
+        <div class="div4">
+          <h6 style="font-size: 16px; margin-left: -90px">Email: {{order.email}}</h6>
+        </div>
+        <div class="div5">
+          <h6 style="font-size: 16px; margin-top: -25px; margin-left: -90px">Adress: {{order.adress}}</h6>
+        </div>
+
+        <div class="div6">
+          <h6 style="font-size: 20px; margin-top: 35px">Status:</h6>
+          <h6 style="font-size: 20px;">{{order.status}}</h6>
+        </div>
+        <div class="div7">
+          <h6 style="font-size: 20px; margin-top: 35px">Courier:</h6>
+          <h6 style="font-size: 20px;">{{order.courier}}</h6>
+        </div>
+
+        <div class="div8">
+          <button (click)="completeOrder(order.id)" type="submit" class="btn btn-primary" style="width: 100px; margin-top: -85px; margin-left: 775px">Complete</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf="showDelivered">
+  <div *ngFor="let order of orders">
+
+    <div class="grid-item card text-dark  mt-5" style="height: 130px; width: 900px; margin-left: 200px">
+      <div class="parent">
+        <div class="div1">
+          <h6 style="font-size: 20px; margin-top:55px; margin-left: 30px">{{order.id}}</h6>
+        </div>
+        <div class="div2">
+          <h6 style="font-size: 20px; margin-top: 35px">Price:</h6>
+          <h6 style="font-size: 20px;">{{order.totalPrice}}</h6>
+        </div>
+
+        <div class="div3">
+          <h6 style="font-size: 16px; margin-top: 25px; margin-left: -90px">Client: {{order.name}}</h6>
+        </div>
+        <div class="div4">
+          <h6 style="font-size: 16px; margin-left: -90px">Email: {{order.email}}</h6>
+        </div>
+        <div class="div5">
+          <h6 style="font-size: 16px; margin-top: -25px; margin-left: -90px">Adress: {{order.adress}}</h6>
+        </div>
+
+        <div class="div6">
+          <h6 style="font-size: 20px; margin-top: 35px">Status:</h6>
+          <h6 style="font-size: 20px;">{{order.status}}</h6>
+        </div>
+        <div class="div7">
+          <h6 style="font-size: 20px; margin-top: 35px">Courier:</h6>
+          <h6 style="font-size: 20px;">{{order.courier}}</h6>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf="showNoOrders">
+  <h6 style="text-align:center; font-size:26px">No current orders</h6>
+</div>

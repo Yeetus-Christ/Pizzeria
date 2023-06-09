@@ -1,0 +1,8 @@
+body {
+}
+
+.header {
+  background-image: url('/assets/images/MenuHeader.jpg');
+  height: 337px;
+  background-size: cover;
+}

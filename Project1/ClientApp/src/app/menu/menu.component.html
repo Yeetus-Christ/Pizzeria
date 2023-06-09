@@ -1,0 +1,85 @@
+<h1 style="text-align: center">Menu</h1>
+
+<div class="row" style="--bs-gutter-x: 0;">
+  <div class="col" style="text-align: right">
+    <button (click)="searchByType('Pizza')" class="btn2">Pizza</button>
+  </div>
+  <div class="col" style="text-align: center">
+    <button (click)="searchByType('Deserts')" class="btn2">Deserts</button>
+  </div>
+  <div class="col" style="text-align: left">
+    <button (click)="searchByType('Drinks')" class="btn2">Drinks</button>
+  </div>
+</div>
+
+<div class="row" style="--bs-gutter-x: 0;">
+    <div class="grid-container" style="justify-items: center">
+      <div *ngFor="let menuItem of menuItems" class="grid-item card text-dark  mt-5" style="width: 500px; background-color: #e5ecf26e;">
+        <div class="row" style="--bs-gutter-x: 0;">
+
+          <div class="col">
+
+            <div style="padding: 20px;">
+              <img src="{{menuItem.image}}" style="height: 250px; width: 250px">
+            </div>
+
+          </div>
+
+          <div class="col">
+
+            
+
+              <div class="row" style="--bs-gutter-x: 0;">
+                <div style="padding: 20px;">
+                  <h6 style="font-size:24px">{{menuItem.name}}</h6>
+                  <h6>{{menuItem.price}} грн</h6>
+                  <h6 style="font-size:18px">{{menuItem.description}}</h6>
+                </div>
+              </div>
+
+              <div class="row" style="position: absolute; bottom: 0; right: 0; --bs-gutter-x: 0; margin-bottom: 5%; margin-right: 7%">
+                <button (click)="showAddToCartForm(menuItem)" type="submit" class="btn btn-primary" style="width: 150px; align-self: end;">Add to cart</button>
+              </div>
+
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<form [formGroup]="form">
+  <div *ngIf="showAddToCart">
+    <div class="addToCartBg">
+
+    </div>
+    <div class="grid-item card text-dark  mt-5 addToCart" style="opacity: 1.0;">
+      <span (click)="showAddToCart = false" style="margin-left:450px" class="close">&times;</span>
+
+      <div class="row" style="--bs-gutter-x: 0;">
+
+        <div class="col" style="margin-left: 40px; margin-top: 10px">
+          <img [src]="currentMenuItem.image" style="height: 70px; width: 70px">
+        </div>
+
+        <div class="col" style="margin-top: 30px;">
+          <h6 style="font-size: 20px">{{currentMenuItem.name}}</h6>
+        </div>
+
+        <div class="input-group col" style="margin-top: 15px; margin-right: 40px">
+          <input formControlName="numberOfItems" style="height: 50px; width: 70px" class="form-control" type="number" min="1" />
+
+          <div style="height: 50px; width: 70px" class="input-group-text">Items</div>
+
+        </div>
+
+      </div>
+
+      <div class="row" style="--bs-gutter-x: 0; margin-top: 20px; justify-content: right; margin-right: 40px">
+        <button (click)="hideAddToCartForm(currentMenuItem.id)" type="submit" class="btn btn-primary" style="width: 100px;">Add</button>
+      </div>
+
+    </div>
+  </div>
+  </form>

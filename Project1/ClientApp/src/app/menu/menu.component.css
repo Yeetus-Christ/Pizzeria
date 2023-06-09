@@ -1,0 +1,50 @@
+.btn2 {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 26px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+  .btn2:hover {
+    background: #eee;
+  }
+
+.row2 {
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-.5 * var(--bs-gutter-x));
+  margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
+.addToCartBg {
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  margin-top: -52px;
+  margin-left: -106px;
+  background-color: grey;
+  opacity: 0.5;
+  width: 2115px;
+  height: 1080px;
+}
+
+.addToCart {
+  width: 500px;
+  height: 200px;
+  background-color: #F4F7F9;
+  position: fixed;
+  top: 30%;
+  left: 43%;
+  margin-top: -52px;
+  margin-left: -106px;
+}
+
+.close {
+  font-size: 30px;
+  font-weight: 600;
+}

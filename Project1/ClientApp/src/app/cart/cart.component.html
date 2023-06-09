@@ -1,0 +1,96 @@
+<form [formGroup]="form">
+  <div *ngFor="let menuItem of itemNumbers">
+    
+
+      <div class="grid-item card text-dark  mt-5" style="height: 110px; width: 900px; margin-left: 200px">
+        <div class="row" style="--bs-gutter-x: 0;">
+
+          <div class="col" style="margin-left: 40px;">
+            <img [src]="menuItem.image" style="height: 70px; width: 70px; margin-top: 20px">
+          </div>
+
+          <div class="col" style="margin-top: 50px;">
+            <h6 style="font-size: 20px">{{menuItem.name}}</h6>
+          </div>
+
+          <div class="input-group col" style="margin-right: 40px; margin-top: 28px">
+            <input style="height: 50px; width: 70px" class="form-control" type="number" value="{{menuItem.num}}"/>
+            <div style="height: 50px; width: 70px" class="input-group-text">Items</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <h6 style="text-align:right; font-size: 20px; margin-right: 350px; margin-top: 50px">Total Price: {{totalPrice}} UAH</h6>
+
+    <div class="container d-grid gap-3" style="max-width: 700px; margin-top: 50px">
+
+      <div class="form-floating">
+        <input formControlName="name" placeholder="Name" class="form-control" type="text" />
+        <label for="name">Name</label>
+
+        <div class="invalid-feedback d-block" *ngIf="form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched)">
+          <div *ngIf="form.controls.name.errors">
+            Name is invalid
+          </div>
+        </div>
+
+      </div>
+
+      <div class="d-grid gap-3">
+
+        <div class="form-floating">
+
+          <input formControlName="email" class="form-control" type="text" id="email" placeholder="Email" />
+          <label class="form-label" for="email">Email</label>
+
+          <div class="invalid-feedback d-block" *ngIf="form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched)">
+
+            <div *ngIf="form.controls.email.errors">
+              Email is invalid
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-floating">
+
+          <input formControlName="adress" placeholder="Adress" class="form-control" id="adress" type="text" />
+          <label class="form-label" for="adress">Adress</label>
+
+          <div class="invalid-feedback d-block" *ngIf="form.controls.adress.invalid && (form.controls.adress.dirty || form.controls.adress.touched)">
+            <div *ngIf="form.controls.adress.errors">
+              Adress is invalid
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <div class="row" style="--bs-gutter-x: 0;">
+
+        <div class="col">
+          <div class="d-flex justify-content-center center">
+            <button (click)="cancelOrder()" type="submit" class="btn btn-primary" style="background: #d10707; border-color: #d10707 ">Cancel</button>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="d-flex justify-content-center center">
+            <button (click)="updateOrder()" type="submit" class="btn btn-primary">Order</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+   
+</form>
